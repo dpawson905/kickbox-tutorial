@@ -1,0 +1,56 @@
+:root {
+  --overlay: rgba(0,0,0,0.7)
+}
+
+.hero {
+  background-image: linear-gradient(var(--overlay), var(--overlay)), url('/images/hero.jpg');
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-text {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrolled {
+  background-color: #212529 !important;
+  transition: background-color 200ms linear;
+}
+
+.fourohfour-hero {
+  background-image: linear-gradient(var(--overlay), var(--overlay)), url('/images/404.jpg');
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fivehundred-hero {
+  background-image: linear-gradient(var(--overlay), var(--overlay)), url('/images/500.jpg');
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

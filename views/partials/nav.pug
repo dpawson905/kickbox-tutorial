@@ -1,0 +1,18 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-transparent.fixed-top
+  .container-fluid
+    a.navbar-brand(href='#') Navbar
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link(class=(page === 'home' ? 'active' : undefined) href='/') Home
+      ul.d-flex.navbar-nav
+        if (currentUser && isAuthenticated)
+          li.nav-item
+            a.nav-link(href="/auth/logout") Logout #{currentUser.username}
+        else 
+          li.nav-item
+            a.nav-link(data-bs-toggle="modal" data-bs-target="#loginModal") Login
+          li.nav-item
+            a.nav-link(data-bs-toggle="modal" data-bs-target="#registerModal") Register

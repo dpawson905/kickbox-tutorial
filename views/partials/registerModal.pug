@@ -1,0 +1,25 @@
+// Modal
+#registerModal.modal.fade(tabindex='-1' aria-labelledby='registerModalLabel' aria-hidden='true')
+  form(action="/auth/register", method="post") 
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h5#registerModalLabel.modal-title Register for an account
+          button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+        .modal-body.row
+          .mb-3 
+            label.form-label(for="email") Email Address 
+            input#email.form-control(type="email", name="email") 
+          .mb-3 
+            label.form-label(for="username") Username 
+            input#username.form-control(type="text", name="username") 
+          .mb-3 
+            label.form-label(for="password") Password 
+            input#password.form-control(type="password", name="password") 
+          .mb-3 
+            label.form-label(for="password2") Confirm Password 
+            input#password2.form-control(type="password", name="password2") 
+        .modal-footer
+          input(type="hidden", name="_csrf" value=`${csrfToken}`)
+          button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+          button.btn.btn-primary(type='submit') Register
