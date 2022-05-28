@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const passport = require('passport');
 
 const {
   asyncErrorHandler,
@@ -15,7 +16,10 @@ router.post(
   validatePassword,
   asyncErrorHandler(postRegister)
 );
-router.post("/login", asyncErrorHandler(postLogin));
+router.post("/login", passport.authenticate('local', {
+  failureFlash: true,
+  failureRedirect: '/',
+}), asyncErrorHandler(postLogin));
 router.get("/logout", logOut);
 
 module.exports = router;

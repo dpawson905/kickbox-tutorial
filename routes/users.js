@@ -2,10 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const {
-  userIndexPage
+  asyncErrorHandler
+} = require('../middleware')
+
+const {
+  getUserProfile
 } = require("../controllers/users");
 
 /* GET users listing. */
-router.post('/register', userIndexPage);
+router.get('/profile/:username', asyncErrorHandler(getUserProfile));
 
 module.exports = router;

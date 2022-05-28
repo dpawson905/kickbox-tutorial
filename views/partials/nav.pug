@@ -1,6 +1,6 @@
 nav.navbar.navbar-expand-lg.navbar-dark.bg-transparent.fixed-top
   .container-fluid
-    a.navbar-brand(href='#') Navbar
+    a.navbar-brand(href='#') Kickbox
     button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
@@ -9,6 +9,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-transparent.fixed-top
           a.nav-link(class=(page === 'home' ? 'active' : undefined) href='/') Home
       ul.d-flex.navbar-nav
         if (currentUser && isAuthenticated)
+          li.nav-item
+            a.nav-link(class=(page === 'profile' ? 'active' : undefined) href=`/users/profile/${currentUser.username}`) Profile
           li.nav-item
             a.nav-link(href="/auth/logout") Logout #{currentUser.username}
         else 

@@ -59,7 +59,9 @@ const fontSrcUrls = [
   'https://fonts.googleapis.com',
   'https://fonts.gstatic.com'
 ];
-const imgSrcUrls = [];
+const imgSrcUrls = [
+  'https://robohash.org'
+];
 app.use(
   helmet.contentSecurityPolicy({
     directives: {

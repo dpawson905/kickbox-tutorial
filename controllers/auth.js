@@ -1,5 +1,4 @@
 const debug = require('debug')('kickbox-tuts:auth-controller');
-const passport = require('passport');
 
 const User = require('../models/user');
 
@@ -26,12 +25,10 @@ exports.postRegister = async (req, res, next) => {
 
 exports.postLogin = async (req, res, next) => {
   try {
-    passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/',
-      successFlash: true,
-      failureFlash: true,
-    })(req, res, next);
+    req.flash("success", `Welcome back ${req.user.username}`);
+    const redirectUrl = req.session.returnTo || "/";
+    delete req.session.returnTo;
+    res.redirect(redirectUrl);
   } catch (err) {
     req.flash('error', err.message);
     return res.redirect('back')

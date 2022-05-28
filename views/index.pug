@@ -1,7 +1,6 @@
 extends layout
 
 block content
-  include partials/nav
   include partials/registerModal
   include partials/loginModal
   .hero
@@ -22,5 +21,9 @@ block content
       });
       typewriter.typeString('kickboxTutorial()')
         .start();
+
+      if (window.location.href !== '/') {
+        
+      }
     });
     
