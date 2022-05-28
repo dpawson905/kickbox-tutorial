@@ -50,11 +50,15 @@ const scriptSrcUrls = [
 ];
 const styleSrcUrls = [
   'https://cdn.jsdelivr.net',
-  'https://unpkg.com'
+  'https://unpkg.com',
+  'https://fonts.googleapis.com'
 ];
 const connectSrcUrls = [];
 const frameSrcUrls = [];
-const fontSrcUrls = [];
+const fontSrcUrls = [
+  'https://fonts.googleapis.com',
+  'https://fonts.gstatic.com'
+];
 const imgSrcUrls = [];
 app.use(
   helmet.contentSecurityPolicy({
@@ -86,6 +90,7 @@ const sess = {
   cookie: {
     httpOnly: true,
     maxAge: 1000 * 60 * 60,
+    sameSite: 'Strict'
   },
   store: MongoDBStore.create({
     mongoUrl: process.env.DB_URL,

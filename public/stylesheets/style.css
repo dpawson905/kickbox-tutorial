@@ -1,5 +1,9 @@
 :root {
-  --overlay: rgba(0,0,0,0.7)
+  --overlay: rgba(0,0,0,0.7);
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
 }
 
 .hero {
@@ -17,6 +21,7 @@
 
 .auth-text {
   height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

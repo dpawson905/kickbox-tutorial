@@ -5,12 +5,22 @@ block content
   include partials/registerModal
   include partials/loginModal
   .hero
-    h1.text-center.text-white.display-1 Kickbox Tutorial
+    h1#hero-text.text-center.text-white.display-1
   if (currentUser && isAuthenticated)
-    .auth-text(data-aos="flip-up" data-aos-duration="2000")
-      h1.text-center.text-secondary.display-3 Check it out... You're logged in
+    .container 
+      .row 
+        .col-12
+          .auth-text(data-aos="flip-up" data-aos-duration="2000")
+            h1.text-center.text-secondary.display-3 Check it out... You're logged in
   script.
     $(document).ready(function () {
-      AOS.init()
+      AOS.init();
+
+      let app = document.getElementById('hero-text');
+      let typewriter = new Typewriter(app, {
+        loop: false
+      });
+      typewriter.typeString('kickboxTutorial()')
+        .start();
     });
     
