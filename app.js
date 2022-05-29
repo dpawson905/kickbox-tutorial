@@ -140,7 +140,7 @@ app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.all('*', (req, res, next) => {
+app.all('*', (err, req, res, next) => {
   res.render('404');
 });
 

@@ -3,14 +3,17 @@ const router = express.Router();
 
 const {
   asyncErrorHandler,
-  isNotAuthenticated
+  isNotAuthenticated,
+  validatePassword
 } = require('../middleware')
 
 const {
-  getUserProfile
+  getUserProfile,
+  updatePassword
 } = require("../controllers/users");
 
-/* GET users listing. */
-router.get('/profile/:username', isNotAuthenticated, asyncErrorHandler(getUserProfile));
+router.route('/profile/:username')
+  .get(isNotAuthenticated, asyncErrorHandler(getUserProfile))
+  .put(isNotAuthenticated, validatePassword, asyncErrorHandler(updatePassword))
 
 module.exports = router;

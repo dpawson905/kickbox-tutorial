@@ -25,7 +25,7 @@ block content
                 hr.style-two
             #list-resetPassword.tab-pane.fade(role='tabpanel' aria-labelledby='list-resetPassword-list')
               h3.display-6.text-center.mb-3.text-muted Reset Password
-              form(action="/auth/user/#{currentUser.username}/update-password", method="post")
+              form(action=`/users/profile/${currentUser.username}?_method=PUT`, method="post")
                 .input-wrapper
                   .input-wrapper-inputs
                     .mb-3
@@ -39,6 +39,7 @@ block content
                         input#changePassword2.form-control(type="password", name="password2")
                         <span class="input-group-text pointer"><i class="far fa-eye" id="toggleChangePassword2"></i></span>
                   .mb-3
+                    input(type="hidden", name="_csrf" value=`${csrfToken}`)
                     button.btn.btn-outline-success(type="submit") Change Password 
             #list-3.tab-pane.fade(role='tabpanel' aria-labelledby='list-3-list')
               h3.display-6.text-center.mb-3 Box 3

@@ -16,10 +16,12 @@ router.post(
   validatePassword,
   asyncErrorHandler(postRegister)
 );
+
 router.post("/login", passport.authenticate('local', {
   failureFlash: true,
   failureRedirect: '/',
 }), asyncErrorHandler(postLogin));
+
 router.get("/logout", logOut);
 
 module.exports = router;
