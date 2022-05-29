@@ -13,13 +13,45 @@
           .mb-3 
             label.form-label(for="56b53") Username 
             input#56b53.form-control(type="text", name="username") 
-          .mb-3 
-            label.form-label(for="56b55") Password 
-            input#56b55.form-control(type="password", name="password") 
-          .mb-3 
-            label.form-label(for="56b57") Confirm Password 
-            input#56b57.form-control(type="password", name="password2") 
+          .mb-3
+            label.form-label.d-block(for="password") Password
+            .input-group
+              input#password.form-control(type="password", name="password")
+              <span class="input-group-text pointer"><i class="far fa-eye" id="togglePassword"></i></span>
+          .mb-3
+            label.form-label(for="password2") Confirm Password
+            .input-group
+              input#password2.form-control(type="password", name="password2")
+              <span class="input-group-text pointer"><i class="far fa-eye" id="togglePassword2"></i></span>
         .modal-footer
           input(type="hidden", name="_csrf" value=`${csrfToken}`)
           button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
           button.btn.btn-primary(type='submit') Register
+  script. 
+    $(document).ready(function () {
+      const togglePassword = document.querySelector("#togglePassword");
+      const togglePassword2 = document.querySelector("#togglePassword2");
+      const password = document.querySelector("#password");
+      const password2 = document.querySelector("#password2");
+
+      togglePassword.addEventListener("click", function () {
+        
+        // toggle the type attribute
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+
+        // toggle the eye icon
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+      });
+      togglePassword2.addEventListener("click", function () {
+        
+        // toggle the type attribute
+        const type = password2.getAttribute("type") === "password" ? "text" : "password";
+        password2.setAttribute("type", type);
+
+        // toggle the eye icon
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+      });
+    });

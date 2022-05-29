@@ -45,18 +45,22 @@ app.set('view engine', 'pug');
 const scriptSrcUrls = [
   'https://cdn.jsdelivr.net',
   'https://code.jquery.com',
-  'https://unpkg.com'
+  'https://unpkg.com',
+  'https://kit.fontawesome.com'
 ];
 const styleSrcUrls = [
   'https://cdn.jsdelivr.net',
   'https://unpkg.com',
   'https://fonts.googleapis.com'
 ];
-const connectSrcUrls = [];
+const connectSrcUrls = [
+  'https://ka-f.fontawesome.com'
+];
 const frameSrcUrls = [];
 const fontSrcUrls = [
   'https://fonts.googleapis.com',
-  'https://fonts.gstatic.com'
+  'https://fonts.gstatic.com',
+  'https://ka-f.fontawesome.com'
 ];
 const imgSrcUrls = [
   'https://robohash.org'

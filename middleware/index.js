@@ -36,6 +36,30 @@ const middleware = {
       return res.redirect("/");
     }
   },
+  isAuthenticated: (req, res, next) => {
+    if (req.isAuthenticated()) {
+      req.flash("error", "You are currently logged in.");
+      res.redirect("/");
+    } else {
+      return next();
+    }
+  },
+
+  isNotAuthenticated: (req, res, next) => {
+    if (req.isAuthenticated()) {
+      return next();
+    } else {
+      res.render('401')
+    }
+  },
+  isNotVerified: async (req, res, next) => {
+    let user = await User.findOne({ username: req.body.username });
+    if (!user.isVerified) {
+      req.flash("error", "Your account has not been verified.");
+      return res.redirect("/");
+    }
+    return next();
+  },
 };
 
 module.exports = middleware;

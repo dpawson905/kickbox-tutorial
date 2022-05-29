@@ -1,16 +1,14 @@
 extends layout
 
 block content
-  include partials/registerModal
-  include partials/loginModal
   .hero
     h1#hero-text.text-center.text-white.display-1
   if (currentUser && isAuthenticated)
     .container 
       .row 
         .col-12
-          .auth-text(data-aos="flip-up" data-aos-duration="2000")
-            h1.text-center.text-secondary.display-3 Check it out... You're logged in
+          .auth-text
+            h1.text-center.text-secondary.display-3(data-aos="flip-up" data-aos-duration="2000") Check it out... You're logged in
   script.
     $(document).ready(function () {
       AOS.init();
@@ -21,9 +19,5 @@ block content
       });
       typewriter.typeString('kickboxTutorial()')
         .start();
-
-      if (window.location.href !== '/') {
-        
-      }
     });
     

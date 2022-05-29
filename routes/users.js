@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const {
-  asyncErrorHandler
+  asyncErrorHandler,
+  isNotAuthenticated
 } = require('../middleware')
 
 const {
@@ -10,6 +11,6 @@ const {
 } = require("../controllers/users");
 
 /* GET users listing. */
-router.get('/profile/:username', asyncErrorHandler(getUserProfile));
+router.get('/profile/:username', isNotAuthenticated, asyncErrorHandler(getUserProfile));
 
 module.exports = router;

@@ -9,7 +9,7 @@ block content
             img(src="https://robohash.org/kickbox", alt="")
           #list-tab.list-group(role='tablist')
             a#list-profile-list.list-group-item.list-group-item-action.active(data-bs-toggle='list' href='#list-profile' role='tab' aria-controls='list-profile') Profile 
-            a#list-2-list.list-group-item.list-group-item-action(data-bs-toggle='list' href='#list-2' role='tab' aria-controls='list-2') Box 2
+            a#list-resetPassword-list.list-group-item.list-group-item-action(data-bs-toggle='list' href='#list-resetPassword' role='tab' aria-controls='list-resetPassword') Reset Password
             a#list-3-list.list-group-item.list-group-item-action(data-bs-toggle='list' href='#list-3' role='tab' aria-controls='list-3') Box 3
             a#list-4-list.list-group-item.list-group-item-action(data-bs-toggle='list' href='#list-4' role='tab' aria-controls='list-4') Box 4
         .col-lg-8.col-md-6.col-12
@@ -17,21 +17,59 @@ block content
             #list-profile.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='list-profile-list')
               .row
                 .d-flex.justify-content-center.align-items-center
-                  h3.display-6.text-center.mb-3.d-inline User Profile 
+                  h3.display-6.text-center.mb-3.d-inline.text-muted User Profile 
                   button.btn.btn-outline-secondary.d-inline.btn-sm.mb-3.ms-2 Edit
                 p.lead Username: #{user.username}
                 hr.style-two
                 p.lead Email: #{user.email}
                 hr.style-two
-            #list-2.tab-pane.fade(role='tabpanel' aria-labelledby='list-2-list')
-              h3.display-6.text-center.mb-3 Box 2
+            #list-resetPassword.tab-pane.fade(role='tabpanel' aria-labelledby='list-resetPassword-list')
+              h3.display-6.text-center.mb-3.text-muted Reset Password
+              form(action="/auth/user/#{currentUser.username}/update-password", method="post")
+                .input-wrapper
+                  .input-wrapper-inputs
+                    .mb-3
+                      label.form-label.d-block(for="password") Password
+                      .input-group
+                        input#changePassword.form-control(type="password", name="password")
+                        <span class="input-group-text pointer"><i class="far fa-eye" id="toggleChangePassword"></i></span>
+                    .mb-3
+                      label.form-label(for="password2") Confirm Password
+                      .input-group
+                        input#changePassword2.form-control(type="password", name="password2")
+                        <span class="input-group-text pointer"><i class="far fa-eye" id="toggleChangePassword2"></i></span>
+                  .mb-3
+                    button.btn.btn-outline-success(type="submit") Change Password 
             #list-3.tab-pane.fade(role='tabpanel' aria-labelledby='list-3-list')
               h3.display-6.text-center.mb-3 Box 3
             #list-4.tab-pane.fade(role='tabpanel' aria-labelledby='list-4-list')
-              h3.display-6.text-center.mb-3 Box 4
-  script.
+              h3.display-6.text-center.mb-3 Box 
+  script. 
     $(document).ready(function () {
-      let $nav = $(".fixed-top");
-      $nav.addClass('scrolled');
+      const toggleChangePassword = document.querySelector("#toggleChangePassword");
+      const toggleChangePassword2 = document.querySelector("#toggleChangePassword2");
+      const changePassword = document.querySelector("#changePassword");
+      const changePassword2 = document.querySelector("#changePassword2");
+
+      toggleChangePassword.addEventListener("click", function () {
+        
+        // toggle the type attribute
+        const type = changePassword.getAttribute("type") === "password" ? "text" : "password";
+        changePassword.setAttribute("type", type);
+
+        // toggle the eye icon
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+      });
+      toggleChangePassword2.addEventListener("click", function () {
+        
+        // toggle the type attribute
+        const type = changePassword2.getAttribute("type") === "password" ? "text" : "password";
+        changePassword2.setAttribute("type", type);
+
+        // toggle the eye icon
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+      });
     });
 
