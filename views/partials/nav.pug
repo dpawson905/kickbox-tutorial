@@ -14,7 +14,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-transparent.fixed-top
           li.nav-item
             a.nav-link(href="/auth/logout") Logout #{currentUser.username}
         else 
+          li.nav-item.me-2
+            button.btn.btn-outline-success(data-bs-toggle="modal" data-bs-target="#loginModal") Login
           li.nav-item
-            a.nav-link(data-bs-toggle="modal" data-bs-target="#loginModal") Login
-          li.nav-item
-            a.nav-link(data-bs-toggle="modal" data-bs-target="#registerModal") Register
+            button.btn.btn-outline-primary(data-bs-toggle="modal" data-bs-target="#registerModal") Register
